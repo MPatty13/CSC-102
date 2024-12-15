@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Maddox Patten-->
+     
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> User Input Form</title>
+
+    
+
+    <style>
+        /* Apply a background color and padding to the entire page */
+        body {
+            background-color: #f4f4f9;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Style the header to make it look nice and give a great font */
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            color: #05600b;
+        }
+
+        /* Add some styling to the form section */
+        .form-container {
+            background-color: #aba6a6;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            width: 90%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* add some styling */
+        button {
+            background-color: #056a22;
+            color: whitesmoke;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* Add hover effect to the button */
+        button:hover {
+            background-color: #136a26;
+        }
+
+        /* Style the input fields */
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 80%;
+            margin-top: 10px;
+        }
+
+        
+
+        /* Style for validation message */
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+
+        .valid {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+  
+    <h1>User Input </h1>
+
+  
+    <!-- Container -->
+    <div class="form-container">
+        <form id="userForm" onsubmit="return validateForm()">
+            <h2>Please fill out the information:</h2>
+
+            <!-- First name input -->
+            <label for="firstName">First Name:</label><br>
+            <input type="text" id="firstName" name="firstName" required><br><br>
+
+            <!-- Last name input -->
+            <label for="lastName">Last Name:</label><br>
+            <input type="text" id="lastName" name="lastName" required><br><br>
+
+            <!-- Zip code input -->
+            <label for="zipCode">Zip Code:</label><br>
+            <input type="text" id="zipCode" name="zipCode" required><br><br>
+
+            <!-- Button to submit the form -->
+            <button type="submit">Submit</button>
+        </form>
+
+        <p id="formValidationMessage"></p>
+        <p id="secretMessage" class="valid"></p>
+
+        <div id="continuePrompt"></div>
+    </div>
+
+    <script>
+       
+
+        // Function to clear the input field and prompt for another string
+        function askForAnother() {
+            // Clear the input field
+            document.getElementById("userInput").value = "";
+            
+            // Hide the result and continue prompt
+            document.getElementById("result").innerHTML = "";
+            document.getElementById("continuePrompt").innerHTML = "";
+        }
+
+        // Function to validate the form inputs
+        function validateForm() {
+            // Get the values of the first name, last name, and zip code
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var zipCode = document.getElementById("zipCode").value;
+
+            // Combine first name and last name into one string
+            var fullName = firstName + " " + lastName;
+
+            // Check if the full name is too long (more than 20 characters)
+            if (fullName.length > 20) {
+                document.getElementById("formValidationMessage").innerHTML = "Warning: Full name is too long! Please enter a name with less than 20 characters.";
+                document.getElementById("formValidationMessage").className = "error";
+                return false; // Stop the form from submitting
+            }
+
+            // Check if the zip code is valid (must contain exactly 5 digits)
+            var zipCodePattern = /^\d{5}$/;
+            if (!zipCodePattern.test(zipCode)) {
+                document.getElementById("formValidationMessage").innerHTML = "Invalid Zip Code. Please enter exactly 5 digits.";
+                document.getElementById("formValidationMessage").className = "error";
+                return false; // Stop the form from submitting
+            }
+
+            // If all inputs are valid, show the secret message
+            document.getElementById("secretMessage").innerHTML = "Congratulations, you've entered valid information! Here's your secret message: 'You are amazing!'";
+            document.getElementById("formValidationMessage").innerHTML = ""; // Clear the error message
+            document.getElementById("formValidationMessage").className = ""; // Clear the error class
+
+            return false; // Prevent the form from reloading the page
+        }
+    </script>
+    
+</body>
+</html>
