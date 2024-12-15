@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Set the character encoding for the document -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    
+    
+    <style>
+        /* Apply a background color and padding to the entire page */
+        body {
+            background-color: #075b0f;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Style the header to make it look nice and give a great font */
+        h1 {
+            font-family: 'Pacifico', ;
+            color: #99949e;
+        }
+
+        /* Add some styling to the prompt section */
+        .content {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        /* Style the buttons for a better user experience */
+        button {
+            background-color: #117807;
+            color: whitesmoke;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* Add hover effect to the button */
+        button:hover {
+            background-color: #0b712b;
+        }
+
+        /* Style the input field */
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 80%;
+            margin-top: 10px;
+        }
+
+        /* Creative Element #2: Image styling */
+        image {
+            width: 150px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Page Title -->
+    <h1>Palindrome Checker</h1>
+
+       <div class="content">
+        <!--  text to help the user understand what to do -->
+        <p>Let's play a game, input a palindrome and see what happens!</p>
+        
+        <!-- Input field for the user to enter the string -->
+        <input type="text" id="userInput" placeholder="Enter a word or phrase" />
+
+        <!-- Button  -->
+        <button onclick="checkPalindrome()">Check Palindrome</button>
+        
+        <p id="result"></p>
+
+        <div id="continuePrompt"></div>
+    </div>
+
+    <script>
+        // Function to check if a word is a palindrome
+        function checkPalindrome() {
+            // inputfrom the user
+            var userInput = document.getElementById("userInput").value;
+
+            // Remove spaces and convert string to lowercase 
+            var cleanedString = userInput.replace(/\s+/g, '').toLowerCase();
+
+            // Reverse the cleaned string
+            var reversedString = cleanedString.split('').reverse().join('');
+
+            // Check if the cleaned string matches its reversed version
+            if (cleanedString === reversedString) {
+                // Notify the user if the string is a palindrome
+                document.getElementById("result").innerHTML = `"${userInput}" is a palindrome!`;
+            } else {
+                // Notify the user if the string is NOT a palindrome
+                document.getElementById("result").innerHTML = `"${userInput}" is not a palindrome.`;
+            }
+
+            // Ask the user if they want to enter another word
+            document.getElementById("continuePrompt").innerHTML = '<button onclick="askForAnother()">Check another word</button>';
+        }
+
+        // Function to clear the input field and prompt for another string
+        function askForAnother() {
+            // Clear the input field
+            document.getElementById("userInput").value = "";
+            
+            // Hide the result and continue prompt
+            document.getElementById("result").innerHTML = "";
+            document.getElementById("continuePrompt").innerHTML = "";
+        }
+    </script>
+     <img class="image" src="Taco Cat.jpg" alt="Palindromes Image">
+
+</body>
+</html>
