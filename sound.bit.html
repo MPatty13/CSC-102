@@ -1,0 +1,89 @@
+<!-- 
+Maddox Patten
+Description: Interactive page featuring "Evil Laugh" audio with creative elements.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound bite Page</title>
+    <style>
+        /* Apply a spooky background gradient */
+        body {
+            font-family: 'Creepster', cursive;
+            background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Style the main heading */
+        h1 {
+            font-size: 48px;
+            margin-top: 20px;
+            text-shadow: 3px 3px 5px black;
+        }
+
+        /* Style the subheading */
+        h2 {
+            font-size: 24px;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 5px #ff4500;
+        }
+
+        /* Style the buttons */
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Start button style */
+        #playButton {
+            background-color: #4caf50;
+        }
+
+        /* Stop button style */
+        #stopButton {
+            background-color: #f44336;
+        }
+
+        /* Style for the spooky image */
+        #programming-meme {
+            max-width: 300px;
+            margin: 20px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <!-- Main heading -->
+    <h1>Interactive Spooky Experience</h1>
+    <h2>Click below to hear the evil laugh!</h2>
+
+    <!-- Buttons to control audio -->
+    <button id="playButton" onclick="playLaugh()">Play Evil Laugh</button>
+    <button id="stopButton" onclick="stopLaugh()" disabled>Stop Laugh</button>
+
+    <!-- Spooky image -->
+    <img id="programming-meme" src="programming-meme" alt="programming-meme">
+
+    <!-- Audio for Evil Laugh -->
+    <audio id="evilLaugh" src="Evil Laugh.mp3"></audio>
+
+    <!-- Link to JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
